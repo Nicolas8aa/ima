@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const { dbConnection } = require("../db/config");
+const path = require("path");
+
+// Routes / controllers
+const userRoutes = require("../routes/users");
 
 class Server {
   constructor() {
@@ -36,7 +40,13 @@ class Server {
   }
 
   routes() {
-    this.app.use("/api/users", () => {});
+    // Api endpoints
+    this.app.use("/api/users", userRoutes);
+
+    // Application routes
+    this.app.use("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    });
   }
 
   listen() {
