@@ -17,6 +17,7 @@ class Server {
     this.middlewares();
     // Routes
     this.routes();
+    this.listen();
   }
 
   async connectDB() {
