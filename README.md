@@ -1,3 +1,3 @@
-# Basi rest api
+# Inventory Management Application
 
 Execute `npm install`
