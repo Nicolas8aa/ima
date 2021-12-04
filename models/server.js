@@ -3,8 +3,9 @@ const cors = require("cors");
 const { dbConnection } = require("../db/config");
 
 // Routes | controllers
-const userRoutes = require("../routes/users");
+const usersRoutes = require("../routes/users");
 const authRoutes = require("../routes/auth");
+const employeesRoute = require("../routes/employees");
 
 class Server {
   constructor() {
@@ -17,7 +18,6 @@ class Server {
     this.middlewares();
     // Routes
     this.routes();
-    this.listen();
   }
 
   async connectDB() {
@@ -35,8 +35,9 @@ class Server {
   }
 
   routes() {
-    this.app.use("/api/users", userRoutes);
+    this.app.use("/api/users", usersRoutes);
     this.app.use("/api/auth", authRoutes);
+    this.app.use("/api/employees", employeesRoute);
   }
 
   listen() {
