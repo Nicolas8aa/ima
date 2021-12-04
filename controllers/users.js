@@ -40,9 +40,7 @@ const postUsers = async (req, res = response) => {
 
     // Save to db
     await user.save();
-    res.json({
-      user,
-    });
+    res.json(user);
   } catch (e) {
     console.log(e);
     res.status(500).json({
