@@ -24,12 +24,14 @@ const {
 
 const router = Router();
 
-router.get("/", [validateJWT, isAdmin, validateFields], getEmployees);
+const adminValidations = [validateJWT, isAdmin, validateFields];
 
-router.post("/", postEmployee);
+router.get("/", [...adminValidations], getEmployees);
 
-router.put("/:id", putEmployee);
+router.post("/", [...adminValidations], postEmployee);
 
-router.delete("/:id", deleteEmployee);
+router.put("/:id", [...adminValidations], putEmployee);
+
+router.delete("/:id", [...adminValidations], deleteEmployee);
 
 module.exports = router;

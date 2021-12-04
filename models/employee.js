@@ -1,10 +1,11 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, SchemaTypes } = require("mongoose");
 const userSchema = require("./userSchema");
 
 const employeeSchema = new Schema(
   {
     userData: userSchema,
-    createdAt: { type: Date, default: Date.now },
+    owner: { type: SchemaTypes.ObjectId, ref: "Admin" },
+    market: { type: SchemaTypes.ObjectId, ref: "Market" },
   },
   { timestamps: true }
 );

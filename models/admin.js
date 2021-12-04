@@ -1,7 +1,9 @@
 const { Schema, model, SchemaType } = require("mongoose");
+const userSchema = require("./userSchema");
 
 const adminSchema = new Schema({
-  adminInfo: { type: Schema.Types.Subdocument, ref: "User" },
+  adminData: userSchema,
+  market: { type: Schema.Types.ObjectId, ref: "Market" },
   employees: [{ type: Schema.Types.ObjectId, ref: "Employee" }],
 });
 
