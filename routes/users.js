@@ -14,6 +14,8 @@ const {
   existEmail,
   existUser,
 } = require("../helpers/dbValidators");
+
+// Controllers
 const {
   getUsers,
   postUsers,

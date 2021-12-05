@@ -27,6 +27,7 @@ const login = async (req, res) => {
       return res.status(400).json({
         msg: "Email or password incorrect(s) - password",
       });
+
     // Generate JWT
     const token = await genJWT(user.id);
 
@@ -42,4 +43,33 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+
+const register = async (req, res) => {
+  if (req.user)
+    return res.status(400).json({
+      msg: "User already authenticated",
+    });
+
+  // Create user
+  const { name, email, password } = req.body;
+
+  try {
+    const user = new User({ name, email, role: "USER" });
+
+    // Hash user
+    const salt = bcryptjs.genSaltSync();
+    user.password = bcryptjs.hashSync(password, salt);
+
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      msg: "Something went wrong :c",
+    });
+  }
+};
+
+module.exports = { login, register };
+
