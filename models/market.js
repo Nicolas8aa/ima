@@ -6,7 +6,7 @@ const marketSchema = new Schema(
       type: String,
       required: [true, "Name is required"],
     },
-    owner: { type: Schema.Types.ObjectId, ref: "Admin", required: true },
+    owner: { type: Schema.Types.ObjectId, ref: "Admin" },
     slug: { type: String, required: true },
     products: [{ type: SchemaTypes.ObjectId, ref: "Product" }],
   },

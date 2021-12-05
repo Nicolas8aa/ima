@@ -3,8 +3,12 @@
   "version": "0.4.1",
   "description": "An inventary manganment application",
   "main": "index.js",
+  "engines": {
+    "node": "14.18.0"
+  },
   "scripts": {
-    "start": "node index.js && cd client/ npm run build",
+    "build": "cd client && npm install && npm run build ",
+    "start": "node index.js",
     "dev": "nodemon ."
   },
   "author": "Nicolas Cuellar Ochoa",
@@ -16,6 +20,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.13"
+    "mongoose": "^6.0.13",
+    "slugify": "^1.6.3"
   }
 }

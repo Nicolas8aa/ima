@@ -27,6 +27,7 @@ const login = async (req, res) => {
       return res.status(400).json({
         msg: "Email or password incorrect(s) - password",
       });
+
     // Generate JWT
     const token = await genJWT(user.id);
 

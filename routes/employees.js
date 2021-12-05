@@ -26,12 +26,12 @@ const router = Router();
 
 const adminValidations = [validateJWT, isAdmin, validateFields];
 
-router.get("/", [...adminValidations], getEmployees);
+router.get("/", [].concat(adminValidations), getEmployees);
 
-router.post("/", [...adminValidations], postEmployee);
+router.post("/", [].concat(adminValidations), postEmployee);
 
-router.put("/:id", [...adminValidations], putEmployee);
+router.put("/:id", [].concat(adminValidations), putEmployee);
 
-router.delete("/:id", [...adminValidations], deleteEmployee);
+router.delete("/:id", [].concat(adminValidations), deleteEmployee);
 
 module.exports = router;
