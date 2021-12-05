@@ -43,6 +43,7 @@ const login = async (req, res) => {
   }
 };
 
+
 const register = async (req, res) => {
   if (req.user)
     return res.status(400).json({
@@ -71,3 +72,4 @@ const register = async (req, res) => {
 };
 
 module.exports = { login, register };
+

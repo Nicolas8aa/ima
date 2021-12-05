@@ -1,3 +1,5 @@
-# IMA developing branch
+
+# Inventory Management Application
+
 
 Execute `npm install`

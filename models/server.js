@@ -9,6 +9,10 @@ const authRoute = require("../routes/auth");
 const employeesRoute = require("../routes/employees");
 const marketRoute = require("../routes/market");
 
+// Routes | controllers
+const userRoutes = require("../routes/users");
+const authRoutes = require("../routes/auth");
+
 class Server {
   constructor() {
     this.app = express();
@@ -33,6 +37,7 @@ class Server {
     this.app.use(express.json());
 
     // Public path
+
     this.app.use(express.static(path.resolve(__dirname, "../client/build")));
   }
 
@@ -44,6 +49,7 @@ class Server {
     this.app.use("*", (req, res) => {
       res.sendFile(path.join(__dirname, "../client/build", "index.html"));
     });
+
   }
 
   listen() {
