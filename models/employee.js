@@ -1,11 +1,12 @@
 const { Schema, model, SchemaTypes } = require("mongoose");
-const userSchema = require("./userSchema");
 
 const employeeSchema = new Schema(
   {
-    userData: userSchema,
-    owner: { type: SchemaTypes.ObjectId, ref: "Admin" },
-    market: { type: SchemaTypes.ObjectId, ref: "Market" },
+    name: { type: String, required: [true, "Name is required"] },
+    email: { type: String, required: [true, "Email is required"] },
+    password: { type: String, required: [true, "Password is required"] },
+    boss: { type: SchemaTypes.ObjectId, ref: "User" },
+    workingAt: { type: SchemaTypes.ObjectId, ref: "Store" },
   },
   { timestamps: true }
 );

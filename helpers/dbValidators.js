@@ -1,5 +1,5 @@
-const Role = require("../models/role");
-const User = require("../models/user");
+const { isValidObjectId } = require("mongoose");
+const { Role, User, Product } = require("../models");
 
 const isValidRole = async (role = "") => {
   const roleExist = await Role.findOne({ role });

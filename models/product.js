@@ -3,10 +3,11 @@ const { Schema, model, SchemaType } = require("mongoose");
 const productSchema = new Schema(
   {
     name: { type: String, required: true },
-    units: { type: Number, required: true, default: 10 },
+    units: { type: Number, default: 10 },
     category: [{ type: Schema.Types.ObjectId, ref: "Category" }],
-    price: { type: Schema.Types.Decimal128, required: true, default: 0 },
+    price: { type: Number, default: 0 },
     createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    store: { type: Schema.Types.ObjectId, ref: "Store", required: true },
   },
   { timestamps: true }
 );

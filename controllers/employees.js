@@ -1,5 +1,4 @@
-const Employee = require("../models/employee");
-const User = require("../models/user");
+const { User, Employee } = require("../models");
 const bcrypt = require("bcryptjs");
 
 const getEmployees = (req, res) => {

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 
-const { login, register } = require("../controllers/auth");
+const { login, register } = require("../controllers");
 const { validateFields } = require("../middlewares/fieldValidation");
 
 const {
@@ -9,7 +9,6 @@ const {
   existEmail,
   existUser,
 } = require("../helpers/dbValidators");
-
 
 const router = Router();
 
@@ -22,7 +21,6 @@ router.post(
   ],
   login
 );
-
 
 router.post(
   "/register",
@@ -37,6 +35,5 @@ router.post(
   ],
   register
 );
-
 
 module.exports = router;

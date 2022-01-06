@@ -1,6 +1,6 @@
 const bcryptjs = require("bcryptjs");
-const User = require("../models/user");
 const { genJWT } = require("../helpers/genJWT");
+const { User, Role } = require("../models");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -43,7 +43,6 @@ const login = async (req, res) => {
   }
 };
 
-
 const register = async (req, res) => {
   if (req.user)
     return res.status(400).json({
@@ -54,9 +53,9 @@ const register = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    const user = new User({ name, email, role: "USER" });
+    const user = new User({ name, email });
 
-    // Hash user
+    // Hash password
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync(password, salt);
 
@@ -72,4 +71,3 @@ const register = async (req, res) => {
 };
 
 module.exports = { login, register };
-

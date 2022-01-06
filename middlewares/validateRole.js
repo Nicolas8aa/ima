@@ -7,7 +7,7 @@ const isAdmin = (req, res, next) => {
 
   const { role, name } = req.user;
 
-  if (role !== "ADMIN") {
+  if (!role.includes("ADMIN")) {
     res.status(401).json({
       msg: `${name} is not authorized to perform this action`,
     });
@@ -25,7 +25,7 @@ const hasRole = (...roles) => {
     }
     if (!roles.includes(req.user.role)) {
       return res.status(401).json({
-        msg: `This action requiere this roles ${roles}`,
+        msg: `This action require these roles ${roles}`,
       });
     }
     next();
